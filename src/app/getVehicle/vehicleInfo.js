@@ -1,0 +1,140 @@
+
+//Run in console to get vehicle.json 
+
+let makes = [
+  "AC",
+  "Acura",
+  "Alfa Romeo",
+  "Allard",
+  "AM General",
+  "American Motors (AMC)",
+  "Amphicar",
+  "Ariel",
+  "Aston Martin",
+  "Audi",
+  "Austin",
+  "Austin-Healey",
+  "Autozam",
+  "Bentley",
+  "BMW",
+  "BrightDrop",
+  "Bugatti",
+  "Buick",
+  "Cadillac",
+  "Caterham",
+  "Chevrolet",
+  "Chrysler",
+  "Citroen",
+  "Daihatsu",
+  "Daimler",
+  "Datsun",
+  "De Soto",
+  "De Tomaso",
+  "DeLorean",
+  "Diamond T",
+  "Dodge",
+  "Dodge or Ram",
+  "Eagle",
+  "Excalibur",
+  "Factory Five Racing",
+  "Ferrari",
+  "Fiat",
+  "Fisker",
+  "Ford",
+  "Freightliner",
+  "Genesis",
+  "GMC",
+  "Hino",
+  "Holden",
+  "Honda",
+  "Hudson",
+  "Hummer",
+  "Hyundai",
+  "Infiniti",
+  "Intermeccanica",
+  "International",
+  "Isuzu",
+  "Jaguar",
+  "Jeep",
+  "Jensen",
+  "Kaiser",
+  "Karma",
+  "Kia",
+  "Koenigsegg",
+  "Lamborghini",
+  "Lancia",
+  "Land Rover",
+  "Lexus",
+  "Lincoln",
+  "Lotus",
+  "Lucid",
+  "Maserati",
+  "Maybach",
+  "Mazda",
+  "McLaren",
+  "McLaughlin-Buick",
+  "Mercedes-AMG",
+  "Mercedes-Benz",
+  "Mercedes-Maybach",
+  "Mercury",
+  "MG",
+  "MINI",
+  "Mitsubishi",
+  "Morgan",
+  "MV-1",
+  "Nash",
+  "Nissan",
+  "Oldsmobile",
+  "Packard",
+  "Pagani",
+  "Plymouth",
+  "Polestar",
+  "Pontiac",
+  "Porsche",
+  "Radical",
+  "Ram",
+  "Renault",
+  "Rivian",
+  "Rolls-Royce",
+  "Rover",
+  "Saab",
+  "Saturn",
+  "Scion",
+  "Shelby",
+  "smart",
+  "Sterling",
+  "Studebaker",
+  "Subaru",
+  "Sunbeam",
+  "Suzuki",
+  "Tesla",
+  "Toyota",
+  "Triumph",
+  "TVR",
+  "VinFast",
+  "Volkswagen",
+  "Volvo",
+  "Willys"
+]
+
+let obj = {};
+let selectElement = document.querySelector('#rfMakes');
+let revent = new Event('change', {
+    bubbles: true,
+    cancelable: true
+});
+
+for (let make of makes) {  
+  setTimeout(() => {
+    selectElement.value = make;
+    selectElement.dispatchEvent(revent);
+  
+    let a = [...document.querySelectorAll("#rfModel>option")].map((e) => {
+      return e.value.replace(/'/g, '"');
+    })
+  
+    obj[make] = a;
+  }, 100)
+}
+
+
