@@ -2,12 +2,20 @@
 
 import { useState } from "react";
 import vehicles from '../getVehicle/vehicle.json'
+import styles from './page.module.css'
 
 export default function Search() {
   const modelInfo = vehicles;
   const [formData, setFormData] = useState({
-    make: '', model: '', location: ''
+    make: '', model: '', location: '', minYear: '', maxYear: ''
   });
+  const [vehicleData, setVehicleData] = useState([]);
+  const year = [
+    1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+    2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+    2020, 2021, 2022, 2023, 2024, 2025
+  ]
 
   const search = () => {
     fetch('http://localhost:3000/getResults', {
@@ -22,6 +30,7 @@ export default function Search() {
         return response.json();
       })
       .then(data => {
+        setVehicleData(data.output);
         console.log('RESPONSE DATA', data)
       })
       .catch(error => {
@@ -36,6 +45,23 @@ export default function Search() {
 
   const handleChange = (event) => {
     setFormData({...formData, [event.target.name]: event.target.value});
+
+    if (event.target.name == 'minYear') {
+      document.querySelectorAll('#maxYear > option').forEach(e => {
+        e.classList.remove(styles.hide);
+        if (e.value < event.target.value) { 
+          e.classList.add(styles.hide);
+        }
+      })
+    }
+    if (event.target.name == 'maxYear') {
+      document.querySelectorAll('#minYear > option').forEach(e => {
+        e.classList.remove(styles.hide);
+        if (e.value > event.target.value) { 
+          e.classList.add(styles.hide);
+        }
+      })
+    }
   }
 
   return (
@@ -203,13 +229,43 @@ export default function Search() {
             <option key={index} value={model}>{model}</option>
           )}
         </select>
+
+        <label>Year Range</label>
+        <select name="minYear" id="minYear">
+          <option value="" selected>Min Year</option>
+          {year.map((year, index) => 
+            <option key={index} value={year}>{year}</option>
+          )}
+        </select>
+        <select name="maxYear" id="maxYear">
+          {year.map((year, index) => 
+            <option key={index} value={year}>{year}</option>
+          )}
+          <option value="" selected>Max Year</option>
+        </select>
+
         <label>Postal Code or City</label>
         <input type="text" name="location" placeholder="S7M 8A2"></input>
         <button type="submit">Go</button>
       </form>
       <div>
         <table>
-
+            <tr>
+              <th>Vehicle</th>
+              <th>mileage</th>
+              <th>price</th>
+              <th>Seller</th>
+            </tr>
+            {vehicleData && vehicleData.map((info, index) => {
+              return (
+                <tr key={index}>
+                  <td>{info.name}</td>
+                  <td>{info.mileage}</td>
+                  <td>{info.price}</td>
+                  <td>{info.dealer}</td>
+                </tr>
+              )
+            })}
         </table>
       </div>
     </>
