@@ -1,3 +1,3 @@
-2024/03/04-16:18:03.197 4f03 Reusing MANIFEST /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Local Storage/leveldb/MANIFEST-000001
-2024/03/04-16:18:03.201 4f03 Recovering log #4
-2024/03/04-16:18:03.204 4f03 Reusing old log /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Local Storage/leveldb/000004.log 
+2024/03/15-03:00:27.074 4903 Reusing MANIFEST /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Local Storage/leveldb/MANIFEST-000001
+2024/03/15-03:00:27.081 4903 Recovering log #7
+2024/03/15-03:00:27.083 4903 Reusing old log /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Local Storage/leveldb/000007.log 

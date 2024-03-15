@@ -1,6 +1,6 @@
-2024/03/04-16:17:07.946 2d03 Reusing MANIFEST /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Local Storage/leveldb/MANIFEST-000001
-2024/03/04-16:17:07.951 2d03 Recovering log #3
-2024/03/04-16:17:07.954 2d03 Reusing old log /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Local Storage/leveldb/000003.log 
-2024/03/04-16:17:16.230 4f03 Level-0 table #5: started
-2024/03/04-16:17:16.250 4f03 Level-0 table #5: 21094 bytes OK
-2024/03/04-16:17:16.291 4f03 Delete type=0 #3
+2024/03/15-02:58:58.968 3003 Reusing MANIFEST /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Local Storage/leveldb/MANIFEST-000001
+2024/03/15-02:58:58.986 3003 Recovering log #4
+2024/03/15-02:58:58.993 3003 Reusing old log /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Local Storage/leveldb/000004.log 
+2024/03/15-02:59:14.858 5103 Level-0 table #8: started
+2024/03/15-02:59:15.073 5103 Level-0 table #8: 19114 bytes OK
+2024/03/15-02:59:15.240 5103 Delete type=0 #4

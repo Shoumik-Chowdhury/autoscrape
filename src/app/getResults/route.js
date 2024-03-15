@@ -21,7 +21,9 @@ export const POST = async (request) => {
   console.log('function start')
   
   const url = `https://www.autotrader.ca/cars/${searchData.make}/${searchData.model}/${searchData.province}/${searchData.city}/?rcp=100&rcs=0&srt=35&yRng=${searchData.minYear}%2C${searchData.maxYear}&prx=100&prv=Saskatchewan&loc=${searchData.location}&hprc=True&wcp=True&sts=New-Used&inMarket=basicSearch`;
-  await page.goto(url, { timeout:60000 });
+  // How to handle pagination?
+  // 
+  await page.goto(url, { timeout:60000 }); // Enable retry, error handling, ..
     // page.waitForNavigation({ waitUntil: 'networkidle0' })
 
   await page.setViewport({ width: 1080, height: 1024 });

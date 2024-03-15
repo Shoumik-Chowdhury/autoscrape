@@ -1,2 +1,3 @@
-2024/03/04-16:18:20.045 7103 Creating DB /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/WebStorage/1/IndexedDB/indexeddb.leveldb since it was missing.
-2024/03/04-16:18:20.124 7103 Reusing MANIFEST /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/WebStorage/1/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2024/03/15-02:59:19.348 8f03 Reusing MANIFEST /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/WebStorage/1/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2024/03/15-02:59:19.348 8f03 Recovering log #3
+2024/03/15-02:59:19.350 8f03 Reusing old log /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/WebStorage/1/IndexedDB/indexeddb.leveldb/000003.log 
