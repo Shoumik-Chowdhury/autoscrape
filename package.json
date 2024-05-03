@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.12",
     "@mui/material-nextjs": "^5.15.11",
+    "@mui/x-charts": "^7.3.0",
     "@mui/x-data-grid": "^6.19.6",
     "jsdom": "^24.0.0",
     "next": "14.1.0",

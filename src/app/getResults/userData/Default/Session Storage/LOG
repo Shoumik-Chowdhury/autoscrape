@@ -1,3 +1,6 @@
-2024/03/15-03:00:27.074 4f03 Reusing MANIFEST /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Session Storage/MANIFEST-000001
-2024/03/15-03:00:27.080 4f03 Recovering log #4
-2024/03/15-03:00:27.084 4f03 Reusing old log /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Session Storage/000004.log 
+2024/04/22-21:16:58.570 4e03 Reusing MANIFEST /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Session Storage/MANIFEST-000001
+2024/04/22-21:16:58.573 4e03 Recovering log #19
+2024/04/22-21:16:58.575 4e03 Reusing old log /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Session Storage/000019.log 
+2024/04/22-21:17:05.095 4e03 Level-0 table #24: started
+2024/04/22-21:17:05.115 4e03 Level-0 table #24: 18456 bytes OK
+2024/04/22-21:17:05.144 4e03 Delete type=0 #19
