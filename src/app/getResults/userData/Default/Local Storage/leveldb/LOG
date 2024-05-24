@@ -1,6 +1,3 @@
-2024/04/22-21:16:58.571 5003 Reusing MANIFEST /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Local Storage/leveldb/MANIFEST-000001
-2024/04/22-21:16:58.574 5003 Recovering log #32
-2024/04/22-21:16:58.574 5003 Reusing old log /Users/shoumikchowdhury/Projects/autoscrape/src/app/getResults/userData/Default/Local Storage/leveldb/000032.log 
-2024/04/22-21:17:14.860 4e03 Level-0 table #37: started
-2024/04/22-21:17:14.880 4e03 Level-0 table #37: 23474 bytes OK
-2024/04/22-21:17:14.912 4e03 Delete type=0 #32
+2024/05/23-21:16:16.440 455c Reusing MANIFEST D:\Projects\autoscrape\src\app\getResults\userData\Default\Local Storage\leveldb/MANIFEST-000001
+2024/05/23-21:16:16.441 455c Recovering log #15
+2024/05/23-21:16:16.442 455c Reusing old log D:\Projects\autoscrape\src\app\getResults\userData\Default\Local Storage\leveldb/000015.log 

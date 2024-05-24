@@ -1,66 +1,40 @@
 'use client'
 
+import { year, columns } from "./_constants";
+import { search } from "./_search.js";
 import { useState } from "react";
 import vehicles from '../getVehicle/vehicle.json'
 import styles from './page.module.css'
 import { Grid, Box, Button, NativeSelect, InputLabel, FormControl, FormGroup, TextField } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { ScatterChart } from '@mui/x-charts/ScatterChart';
+import validateCanadianPostalCode from '../_lib/postalCodeValidate';
 
 export default function Search() {
-  const currencyFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
-  const mileageFormatter = new Intl.NumberFormat("pt-PT", { style: "unit", unit: "kilometer" });
+
   const modelInfo = vehicles;
+  const [vehicleData, setVehicleData] = useState('');
+  const [errorState, setErrorState] = useState(false);
+  
+  const csv = "";
+
   const [formData, setFormData] = useState({
     make: '', model: '', radius: '', location: '', minYear: '', maxYear: ''
   });
-  const [vehicleData, setVehicleData] = useState('');
-  const year = [
-    1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
-    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
-    2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
-    2020, 2021, 2022, 2023, 2024, 2025
-  ];
-  const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'vehicle', headerName: 'Model', width: 230 },
-    { field: 'mileage', headerName: 'Mileage', type: 'number', minWidth: 130, flex:0.5, valueFormatter: (value) => mileageFormatter.format(value.value) },
-    { field: 'price', headerName: 'Price ($ CAD)', type: 'number', minWidth: 120, flex:0.5, valueFormatter: (value) => currencyFormatter.format(value.value) },
-    { field: 'dealer', headerName: 'Seller', minWidth: 180, flex:1 }
-  ];
+  
   const rows = vehicleData?vehicleData.map((info, index) => {
     return {id: index, vehicle: info.name, mileage: info.mileage, price: info.price, dealer: info.dealer}
   }):[{id: 0, vehicle: "", mileage: "", price: "", dealer: ""}]
 
-  const search = () => {
-    fetch('http://localhost:3000/getResults', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        data.output.forEach(row => {
-          row.price = row.price.replace(/[$ ,]/g, ""),
-          row.mileage = row.mileage.replace(/[,km]/g, "")
-        })
-        setVehicleData(data.output);
-        // Exporting data?
-      })
-      .catch(error => {
-        console.error('getResult fetch error [/search]:', error);
-      });
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault()
     // Form validation
-    search();
+    if (!validateCanadianPostalCode(formData.location)) {
+      setErrorState(true);
+      return;
+    }
+    setErrorState(false);
+    search(formData, setVehicleData);
   }
 
   const handleChange = (event) => {
@@ -86,7 +60,13 @@ export default function Search() {
 
   return (
     <>
-      <Box component="section" my={6} mx={4}>
+      <Box component="section" my={6} mx={4} 
+        sx={{
+          borderColor: 'primary.main',
+          border: 2,
+          borderRadius: 4,
+          p: 2
+        }}>
         <form onChange={handleChange} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={6}>
@@ -297,7 +277,7 @@ export default function Search() {
             </Grid>
             <Grid item display="flex" justifyContent="center" alignItems="center" xs={6}>
               <FormControl>
-                <TextField  variant="outlined" label="Postal Code or City" id="postalCode" name="location" placeholder="S1M 2A3"/>
+                <TextField error={errorState} helperText={errorState?"Incorrect entry. Format: A1B 2C3":''} variant="outlined" label="Postal Code" id="postalCode" name="location" placeholder="A1B 2C3"/>
               </FormControl>
             </Grid>
             <Grid item display="flex" justifyContent="center" alignItems="center" xs={6}>
@@ -310,17 +290,17 @@ export default function Search() {
         <DataGrid
           rows={rows}
           columns={columns}
-          initialState={{
+          initialState={{ 
             pagination: {
               paginationModel: { page: 0, pageSize: 10 },
             },
           }}
-          pageSizeOptions={[10, 50, 200]}
+          pageSizeOptions={[10, 50, 100]}
         />
       </Box>
       <Box>
         <ScatterChart
-          width={800}
+          sx={{ maxWidth: '800px' }}
           height={600}
           series={[
             {
