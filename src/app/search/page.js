@@ -2,6 +2,8 @@
 
 import { year, columns } from "./_constants";
 import { search } from "./_search.js";
+import { csvConverter } from "./_csv";
+import LoadingScreen from "./loadingData";
 import { useState } from "react";
 import vehicles from '../getVehicle/vehicle.json'
 import styles from './page.module.css'
@@ -13,10 +15,11 @@ import validateCanadianPostalCode from '../_lib/postalCodeValidate';
 export default function Search() {
 
   const modelInfo = vehicles;
+  const [open, setOpen] = useState(false);
   const [vehicleData, setVehicleData] = useState('');
   const [errorState, setErrorState] = useState(false);
   
-  const csv = "";
+  const [csv, setCsv] = useState("");
 
   const [formData, setFormData] = useState({
     make: '', model: '', radius: '', location: '', minYear: '', maxYear: ''
@@ -34,7 +37,7 @@ export default function Search() {
       return;
     }
     setErrorState(false);
-    search(formData, setVehicleData);
+    search(formData, setVehicleData, setOpen);
   }
 
   const handleChange = (event) => {
@@ -57,6 +60,22 @@ export default function Search() {
       })
     }
   }
+
+  
+  const handleDownload = async () => {
+    const csvContent= csvConverter(vehicleData, setCsv);
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+    const url = window.URL.createObjectURL(blob);
+  
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'data.csv');
+
+    link.click();
+
+    window.URL.revokeObjectURL(url); 
+  };
 
   return (
     <>
@@ -298,6 +317,9 @@ export default function Search() {
           pageSizeOptions={[10, 50, 100]}
         />
       </Box>
+      <Box mx={4} my={2}>
+        <Button variant="contained" onClick={handleDownload}>Download as CSV</Button>
+      </Box>
       <Box>
         <ScatterChart
           sx={{ maxWidth: '800px' }}
@@ -310,6 +332,7 @@ export default function Search() {
           ]}
         />
       </Box>
+      {LoadingScreen({ open })}
     </>
   )
 }

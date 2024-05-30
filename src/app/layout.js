@@ -5,11 +5,6 @@ import { Box, Typography, AppBar, Toolbar, Link, Modal, Avatar, Button } from '@
 import { useState } from 'react';
 import styles from "./globals.css";
 
-// export const metadata = {
-//   title: "Autoscrape",
-//   description: "Get information about automotive market",
-// };
-
 const modalStyle = {
   position: 'absolute',
   top: '50%',
@@ -46,7 +41,7 @@ export default function RootLayout({ children }) {
         >
           <Box sx={modalStyle}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Email: 
+              Email: shoumik.chowdhury24@gmail.com
             </Typography>
           </Box>
         </Modal>
