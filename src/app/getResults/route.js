@@ -15,7 +15,7 @@ export const POST = async (request) => {
   searchData.city = 'saskatoon';
   console.log(searchData);
 
-  const browser = await puppeteer.launch({ headless: true, /*userDataDir: userDataDir*/ });
+  const browser = await puppeteer.launch({ headless: true, timeout: 0 /*userDataDir: userDataDir*/ });
 
   return SourceA(browser, searchData);
 }

@@ -7,8 +7,6 @@ export default async function SourceA(browser, searchData) {
     console.log('fetching from Source A')
     
     const url = `https://www.autotrader.ca/cars/${searchData.make}/${searchData.model}/${searchData.province}/${searchData.city}/?rcp=100&rcs=0&srt=35&yRng=${searchData.minYear}%2C${searchData.maxYear}&prx=${searchData.radius}&prv=Saskatchewan&loc=${searchData.location}&hprc=True&wcp=True&sts=New-Used&inMarket=advancedSearch`;
-
-    await page.goto(url, { timeout:60000 });
     
     const maxRetries = 2;
     let retries = 0;
