@@ -18,7 +18,7 @@
     "@mui/x-data-grid": "^6.19.6",
     "jsdom": "^24.0.0",
     "next": "^14.1.0",
-    "puppeteer": "^22.0.0",
+    "puppeteer": "^22.10.0",
     "react": "^18",
     "react-dom": "^18"
   },
