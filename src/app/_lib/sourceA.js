@@ -25,11 +25,6 @@ export default async function SourceA(browser, searchData) {
 
     await page.waitForSelector('#result-item-inner-div');
 
-
-    await page.waitForFunction(() => {
-        return document.querySelectorAll('#result-item-inner-div').length > 0;
-    });
-
     console.log('page loaded');
 
     const html = await page.content();
