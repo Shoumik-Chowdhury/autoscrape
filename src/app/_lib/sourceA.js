@@ -14,6 +14,7 @@ export default async function SourceA(browser, searchData) {
     while (retries < maxRetries) {
         try {
         await page.goto(url, { timeout: 60000 });
+        console.log("url loaded")
         break;
         } catch (error) {
         console.error(`Failed to load page. Retrying (${retries + 1}/${maxRetries})...`);
@@ -23,7 +24,7 @@ export default async function SourceA(browser, searchData) {
 
     await page.setViewport({ width: 1080, height: 1024 });
 
-    await page.waitForSelector('#result-item-inner-div');
+    await page.waitForSelector('#result-item-inner-div', {timeout: 60000});
 
     console.log('page loaded');
 
