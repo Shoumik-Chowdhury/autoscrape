@@ -15,7 +15,17 @@ export const POST = async (request) => {
   searchData.city = 'saskatoon';
   console.log(searchData);
 
-  const browser = await puppeteer.launch({ headless: true, timeout: 0 /*userDataDir: userDataDir*/ });
+  const browser = await puppeteer.launch({ 
+    headless: true, 
+    /*userDataDir: userDataDir*/
+    executablePath: "/usr/bin/google-chrome-stable",
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--single-process",
+      "--no-zygote"
+    ]
+  });
 
   return SourceA(browser, searchData);
 }
