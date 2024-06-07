@@ -37,6 +37,7 @@ export default function Search() {
       return;
     }
     setErrorState(false);
+    setOpen(true);
     search(formData, setVehicleData, setOpen);
   }
 
@@ -332,7 +333,7 @@ export default function Search() {
           ]}
         />
       </Box>
-      {LoadingScreen({ open })}
+      {open && LoadingScreen()}
     </>
   )
 }

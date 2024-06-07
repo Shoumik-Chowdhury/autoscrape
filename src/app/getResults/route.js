@@ -18,13 +18,6 @@ export const POST = async (request) => {
   const browser = await puppeteer.launch({ 
     headless: true, 
     /*userDataDir: userDataDir*/
-    executablePath: "/usr/bin/google-chrome-stable",
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--single-process",
-      "--no-zygote"
-    ]
   });
 
   return SourceA(browser, searchData);

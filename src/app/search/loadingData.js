@@ -1,7 +1,7 @@
 "use client"
 import { CircularProgress, Backdrop } from '@mui/material';
 
-function LoadingScreen({ open }) {
+function LoadingScreen() {
   return (
     <Backdrop
       sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}

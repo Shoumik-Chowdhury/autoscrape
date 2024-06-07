@@ -1,5 +1,4 @@
 export const search = (formData, setVehicleData, setOpen) => {
-  setOpen(true);
   fetch(`/getResults`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -20,6 +19,9 @@ export const search = (formData, setVehicleData, setOpen) => {
     })
     .catch(error => {
       console.error('getResult fetch error [/search]:', error);
-    });
-  setOpen(false);
+    })
+    .finally(() => {
+      setOpen(false);
+    })
+ 
 }
